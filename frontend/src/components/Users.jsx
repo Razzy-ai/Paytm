@@ -3,6 +3,7 @@ import axios from "axios";
 import { Button } from "./Button";
 import debounce from "lodash.debounce";
 import PropTypes from "prop-types";
+import {useNavigate} from "react-router-dom";
 
 export const Users = () => {
     const [users, setUsers] = useState([]);
@@ -85,14 +86,16 @@ export const Users = () => {
 
 // ✅ Fixed User Component
 function User({ user }) {
+    const navigate = useNavigate();
     return (
         <div className="flex justify-between items-center p-4 border border-gray-700 rounded-2xl shadow-lg bg-gray-900 transition-all hover:bg-gray-800">
         {/* User Avatar & Details */}
         <div className="flex items-center space-x-4">
             {/* Gradient Avatar */}
-            <div className="rounded-full h-12 w-12 bg-gradient-to-br from-blue-600 to-blue-400 flex items-center justify-center text-lg font-bold text-white border border-white shadow-lg">
-            {user.firstname[0].toUpperCase()}
-        </div>
+            <div className="rounded-full h-12 w-12 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-lg font-bold border border-gray-300 shadow-md">
+               <span className="text-gray-600">{user.firstname[0].toUpperCase()}</span>
+             </div>
+
 
 
             {/* User Info */}
@@ -106,8 +109,8 @@ function User({ user }) {
         <Button 
             label="Send Money" 
             className="bg-blue-600 text-white px-4 py-2 rounded-lg font-medium hover:bg-blue-700 transition-all shadow-md"
-            onClick={() => alert(`Sending money to ${user.firstname}`)} 
-        />
+            onClick= {() => navigate(`/transfer?id=${user._id}&name=${user.firstname}`)}
+             />
     </div>
 
     );
@@ -118,7 +121,8 @@ User.propTypes = {
     user: PropTypes.shape({
         firstname: PropTypes.string.isRequired,
         lastname: PropTypes.string.isRequired,
-        username: PropTypes.string.isRequired, // ✅ username instead of email
+        username: PropTypes.string.isRequired, 
+        _id: PropTypes.string.isRequired,
     }).isRequired,
 };
 

@@ -18,6 +18,7 @@ const signupBody = zod.object({
 
 router.post("/signup", async (req, res) => {
     const { success, error } = signupBody.safeParse(req.body);
+    console.log("Received request body:", req.body);
     if (!success) {
         return res.status(400).json({
             message: "Incorrect inputs",
@@ -69,6 +70,7 @@ const signinBody = zod.object({
 });
 
 router.post("/signin", async (req, res) => {
+    console.log("Received login request:", req.body);
     const { success } = signinBody.safeParse(req.body);
     if (!success) {
         return res.status(400).json({

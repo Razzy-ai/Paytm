@@ -12,15 +12,14 @@
   "dependencies": {
     "@tailwindcss/vite": "^4.0.4",
     "axios": "^1.7.9",
-    "ethers": "^6.13.5",
     "lodash.debounce": "^4.0.8",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-icon": "^1.0.0",
     "react-icons": "^5.5.0",
     "react-qr-barcode-scanner": "^2.0.0",
-    "react-router-dom": "^7.1.5",
-    "web3": "^4.16.0"
+    "react-router-dom": "^7.1.5"
+    
   },
   "devDependencies": {
     "@eslint/js": "^9.19.0",
